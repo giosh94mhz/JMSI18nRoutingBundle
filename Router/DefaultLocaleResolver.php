@@ -70,6 +70,14 @@ class DefaultLocaleResolver implements LocaleResolverInterface
                     return $lang;
                 }
             }
+            foreach ($languages as $lang) {
+                if (strlen($lang) > 2) {
+                    $lang = substr($lang, 0, 2);
+                    if (in_array($lang, $availableLocales, true)) {
+                        return $lang;
+                    }
+                }
+            }
         }
 
         return null;

@@ -54,6 +54,7 @@ class DefaultLocaleResolverTest extends \PHPUnit_Framework_TestCase
         $tests[] = array(Request::create('/', 'GET', array(), array(), array(), array('HTTP_ACCEPT_LANGUAGE' => 'dk;q=0.5')), array('es', 'dk'), 'dk', 'Accept-Language header is used.');
         $tests[] = array(Request::create('/'), array('foo'), null, 'When Accept-Language header is used, and no locale matches, null is returned');
         $tests[] = array(Request::create('/', 'GET', array(), array(), array(), array('HTTP_ACCEPT_LANGUAGE' => '')), array('foo'), null, 'Returns null if no method could be used');
+        $tests[] = array(Request::create('/', 'GET', array(), array(), array(), array('HTTP_ACCEPT_LANGUAGE' => 'it-IT;q=0.5')), array('fr','it'), 'it', 'When Accept-Language header is used, locale can match partially');
 
         return $tests;
     }
